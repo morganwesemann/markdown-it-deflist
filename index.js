@@ -108,6 +108,8 @@ module.exports = function deflist_plugin(md) {
     for (;;) {
       prevEmptyEnd = false;
 
+      token     = state.push('div_open', 'div', 1);
+
       token          = state.push('dt_open', 'dt', 1);
       token.map      = [ dtLine, dtLine ];
 
@@ -174,6 +176,8 @@ module.exports = function deflist_plugin(md) {
         state.ddIndent = oldDDIndent;
 
         token = state.push('dd_close', 'dd', -1);
+
+        token     = state.push('div_close', 'div', -1);
 
         itemLines[1] = nextLine = state.line;
 
